@@ -31,10 +31,10 @@ int helper(vector<int> &soln, int i) {
  * uses precomputed array soln to find the vertices in the minimum dominating set
  */
 vector<int> findMinDomSet(vector<int> &path, vector<int> &soln, int result, int i) {
-    std::vector<int> final;
+    std::vector<int> minDomSet;
 
     if (helper(soln, i) < helper(soln, i - 1)) {
-        final.push_back(path[i]);
+        minDomSet.push_back(path[i]);
         result -= path[i];
     } else {
         final.push_back(path[i-1]);
@@ -48,25 +48,25 @@ vector<int> findMinDomSet(vector<int> &path, vector<int> &soln, int result, int 
         int h3 = helper(soln, i - 3);
 
         if (h3 <= h1 and h3 <= h2) {
-            final.push_back(path[i - 3]);
+            minDomSet.push_back(path[i - 3]);
             result -= path[i - 3];
             i-=3;
         }
 
         else if (h2 <= h1){
-            final.push_back(path[i - 2]);
+            minDomSet.push_back(path[i - 2]);
             result -= path[i - 2];
             i-=2;
         }
 
         else {
-            final.push_back(path[i - 1]);
+            minDomSet.push_back(path[i - 1]);
             result -= path[i - 1];
             i-=1;
         }
     }
 
-    return final;
+    return minDomSet;
 }
 
 /*
