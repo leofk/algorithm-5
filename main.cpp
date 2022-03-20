@@ -37,7 +37,7 @@ vector<int> findMinDomSet(vector<int> &path, vector<int> &soln, int result, int 
         minDomSet.push_back(path[i]);
         result -= path[i];
     } else {
-        final.push_back(path[i-1]);
+        minDomSet.push_back(path[i-1]);
         result -= path[i-1];
         i--;
     }
